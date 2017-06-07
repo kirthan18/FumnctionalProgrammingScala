@@ -20,11 +20,11 @@ object Main {
    * Exercise 1
    */
     def pascal(c: Int, r: Int): Int = ???
-  
+
   /**
    * Exercise 2
    */
-    def balance(chars: List[Char]): Boolean = {
+    def balanceNonRecursive(chars: List[Char]): Boolean = {
       val stack = mutable.Stack[Char]()
 
       for (c <- chars) {
@@ -36,6 +36,19 @@ object Main {
       }
       stack.isEmpty
     }
+
+  def balance(chars: List[Char]): Boolean = {
+    balance_(chars, 0)
+  }
+
+  def balance_(chars: List[Char], top: Int): Boolean = {
+    if (chars.isEmpty) top == 0
+    else {
+      if (chars.head == '(') balance_(chars.tail, top + 1)
+      else if (chars.head == ')') top > 0 && balance_(chars.tail, top - 1)
+      else balance_(chars.tail, top)
+    }
+  }
   
   /**
    * Exercise 3
