@@ -4,22 +4,23 @@ import scala.collection.mutable
 
 object Main {
   def main(args: Array[String]) {
-    //    println("Pascal's Triangle")
-    //    for (row <- 0 to 10) {
-    //      for (col <- 0 to row)
-    //        print(pascal(col, row) + " ")
-    //      println()
-    //    }
-    println(balance("(if (zero? x) max (/ 1 x))".toList))
-    println(balance("I told him (that it's not (yet) done).\n(But he wasn't listening)".toList))
-    println(balance(":-)".toList))
-    println(balance("())(".toList))
+        println("Pascal's Triangle")
+        for (row <- 0 to 10) {
+          for (col <- 0 to row)
+            print(pascal(col, row) + " ")
+          println()
+        }
   }
 
   /**
     * Exercise 1
     */
-  def pascal(c: Int, r: Int): Int = ???
+  def pascal(c: Int, r: Int): Int = factorial(r)/ (factorial(c) * factorial(r-c))
+
+  def factorial(n: Int): Int = {
+    if (n <= 1) 1
+    else n * factorial(n-1)
+  }
 
   /**
     * Exercise 2
